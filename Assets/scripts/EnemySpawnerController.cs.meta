@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6de81968420e34f41b6409a627d8bf57
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EnemyPrefab: {fileID: 1455718659814362, guid: bf43fe3ed09cec246b4f2f367f9817fa,
+      type: 3}
+  - HealthPickupPrefab: {fileID: 6810065668751437457, guid: 6e04279b1978fd14dbc5d8f7fd7247ed,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

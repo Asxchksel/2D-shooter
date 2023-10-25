@@ -8,3 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main.unity
     guid: f365f0b6fef2eda438cb729e6a9020e7
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: ae4d758869a0de444967215d5c1cd7da
+  - enabled: 1
+    path: Assets/StartGame.unity
+    guid: a436744e37f77aa41b7b05c678797fbc
+  m_configObjects: {}

@@ -54,6 +54,7 @@ public class ShipController : MonoBehaviour
         Vector2 movement = new Vector2(moveX, moveY).normalized * speed * Time.deltaTime;
         transform.Translate(movement);
 
+
         shotTimer += Time.deltaTime;
 
         if (Input.GetAxisRaw("Fire2") > 0 && shotTimer > timeBetweenShots)

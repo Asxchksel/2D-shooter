@@ -320,6 +320,16 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1511666302}
+    - target: {fileID: 1975377805567929393, guid: 08a11ac572b1de04c89ee9c5500c84a0,
+        type: 3}
+      propertyPath: currentPickups
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975377805567929393, guid: 08a11ac572b1de04c89ee9c5500c84a0,
+        type: 3}
+      propertyPath: timeBetweenLaserAbility
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1438,12 +1448,12 @@ PrefabInstance:
     - target: {fileID: 951332328741532906, guid: 5f89320fbbc5317419b62a2b636b412f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.768
+      value: -4.4397
       objectReference: {fileID: 0}
     - target: {fileID: 951332328741532906, guid: 5f89320fbbc5317419b62a2b636b412f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1276
+      value: -3.8055
       objectReference: {fileID: 0}
     - target: {fileID: 951332328741532906, guid: 5f89320fbbc5317419b62a2b636b412f,
         type: 3}
@@ -1485,12 +1495,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5584574451133595370, guid: 5f89320fbbc5317419b62a2b636b412f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4be2eada1c3221e498adb59934216300,
-        type: 3}
     - target: {fileID: 7884015469058951532, guid: 5f89320fbbc5317419b62a2b636b412f,
         type: 3}
       propertyPath: m_Name

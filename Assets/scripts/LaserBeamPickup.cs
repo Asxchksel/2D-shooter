@@ -29,12 +29,11 @@ public class LaserBeamPickup : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            if(player.GetComponent<ShipController>().currentPickups != player.GetComponent<ShipController>().maxPickups){
+        if(other.gameObject.tag == "Player" && player.GetComponent<ShipController>().currentPickups <2){
             Destroy(this.gameObject);
-            player.GetComponent<ShipController>().currentPickups += 1;
+            player.GetComponent<ShipController>().currentPickups ++;
             player.GetComponent<ShipController>().updatePickups();
             }
-        }
+        
     }
 }

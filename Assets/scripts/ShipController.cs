@@ -40,9 +40,23 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     TMP_Text pickupText;
 
-    void Awake(){
+    [SerializeField]
+    float timeBetweenLaserAbility = 1f;
+
+    float laserShotTimer = 0;
+
+    float timeBetweenLaserShots = 0.1f;
+    float timeSinceLaserShot = 0;
+
+
+    int laserShotsToShoot = 0;
+    int laserShotsToShootMax = 30;
+
+
+    void Awake()
+    {
         currentHp = maxHp;
-        currentPickups = 0;
+        // currentPickups = 0;
         updateHealthSlider();
         updatePickups();
     }
@@ -56,39 +70,65 @@ public class ShipController : MonoBehaviour
 
 
         shotTimer += Time.deltaTime;
+        laserShotTimer += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Fire2") > 0 && shotTimer > timeBetweenShots)
+        if (Input.GetAxisRaw("Fire1") > 0 && shotTimer > timeBetweenShots)
         {
             Instantiate(bulletPrefab, gunPosition.position, Quaternion.identity);
             shotTimer = 0;
         }
 
-        if (Input.GetAxisRaw("Fire1") > 0 && currentPickups > 0){
-            currentPickups --;
+        if (Input.GetAxisRaw("Fire2") > 0 && laserShotTimer > timeBetweenLaserAbility && currentPickups > 0)
+        {
+            currentPickups--;
+            print("begin blasting!");
 
+            laserShotsToShoot = laserShotsToShootMax;
+            laserShotTimer = 0;
+            updatePickups();
+        }
+
+        timeSinceLaserShot += Time.deltaTime;
+        if (laserShotsToShoot > 0 && timeSinceLaserShot > timeBetweenLaserShots)
+        {
+            print("pew!");
+            Instantiate(bulletPrefab, gunPosition.position, Quaternion.identity);
+            laserShotsToShoot--;
+            timeSinceLaserShot = 0;
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "enemy"){
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "enemy")
+        {
             currentHp -= 10;
             updateHealthSlider();
         }
-        if(other.gameObject.tag == "health" && currentHp > 0 && currentHp < maxHp){
+        if (other.gameObject.tag == "health" && currentHp > 0 && currentHp < maxHp)
+        {
             currentHp += 10;
             updateHealthSlider();
         }
+        if (other.gameObject.tag == "laserbeam" && currentPickups != maxPickups)
+        {
+            updatePickups();
+        }
     }
 
-    public void updateHealthSlider(){
+    public void updateHealthSlider()
+    {
         healthSlider.maxValue = maxHp;
         healthSlider.value = currentHp;
         healthText.text = currentHp + "/" + maxHp;
-        if (currentHp <= 0){
+        if (currentHp <= 0)
+        {
             SceneManager.LoadScene(1);
         }
     }
 
-    public void updatePickups(){
+    public void updatePickups()
+    {
         pickupText.text = currentPickups + "/" + maxPickups;
     }
 }

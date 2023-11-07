@@ -36,7 +36,7 @@ public class EnemySpawnerController : MonoBehaviour
 
         if(pickupSpawnTimer > timeBetweenPickups){
             float randomNumber = Random.Range(1, 10);  
-                if(randomNumber <= 5){
+                if(randomNumber <= 0){
                     Instantiate(HealthPickupPrefab);
                     pickupSpawnTimer = 0;
                 }

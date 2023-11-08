@@ -22,10 +22,14 @@ public class EnemySpawnerController : MonoBehaviour
     float timeBetweenEnemies = 1.5f;
 
     [SerializeField] 
-    float timeBetweenPickups = 5.0f;
-    
+    float timeBetweenPickups = 15.0f;
+
+    GameObject player;
+ 
     void Update()
     {
+        float randomNumber = Random.Range(0, 10);  
+
         enemySpawnTimer += Time.deltaTime;
         pickupSpawnTimer += Time.deltaTime;
 
@@ -34,17 +38,14 @@ public class EnemySpawnerController : MonoBehaviour
             enemySpawnTimer = 0;
         }
 
-        if(pickupSpawnTimer > timeBetweenPickups){
-            float randomNumber = Random.Range(1, 10);  
-                if(randomNumber <= 0){
-                    Instantiate(HealthPickupPrefab);
-                    pickupSpawnTimer = 0;
-                }
-                if(randomNumber > 5){
-                    Instantiate(LaserBeamPickup);
-                    pickupSpawnTimer = 0;
-                }
-            
+        if(pickupSpawnTimer > timeBetweenPickups && randomNumber < 5){
+            Instantiate(HealthPickupPrefab);
+            pickupSpawnTimer = 0;
+            }
+
+        if(pickupSpawnTimer > timeBetweenPickups && randomNumber >= 5){
+            Instantiate(LaserBeamPickup);
+            pickupSpawnTimer = 0;    
         }
        
     }

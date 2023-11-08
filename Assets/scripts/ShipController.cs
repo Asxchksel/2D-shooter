@@ -48,15 +48,15 @@ public class ShipController : MonoBehaviour
     float timeBetweenLaserShots = 0.1f;
     float timeSinceLaserShot = 0;
 
-
     int laserShotsToShoot = 0;
     int laserShotsToShootMax = 30;
+
 
 
     void Awake()
     {
         currentHp = maxHp;
-        // currentPickups = 0;
+        currentPickups = 0;
         updateHealthSlider();
         updatePickups();
     }
@@ -81,8 +81,6 @@ public class ShipController : MonoBehaviour
         if (Input.GetAxisRaw("Fire2") > 0 && laserShotTimer > timeBetweenLaserAbility && currentPickups > 0)
         {
             currentPickups--;
-            print("begin blasting!");
-
             laserShotsToShoot = laserShotsToShootMax;
             laserShotTimer = 0;
             updatePickups();
@@ -91,11 +89,12 @@ public class ShipController : MonoBehaviour
         timeSinceLaserShot += Time.deltaTime;
         if (laserShotsToShoot > 0 && timeSinceLaserShot > timeBetweenLaserShots)
         {
-            print("pew!");
             Instantiate(bulletPrefab, gunPosition.position, Quaternion.identity);
             laserShotsToShoot--;
             timeSinceLaserShot = 0;
         }
+
+        updatePickups();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -129,6 +128,17 @@ public class ShipController : MonoBehaviour
 
     public void updatePickups()
     {
-        pickupText.text = currentPickups + "/" + maxPickups;
+        float nextAbilityUseF = timeBetweenLaserAbility - laserShotTimer;
+        int nextAbilityUse = (int)nextAbilityUseF;
+        if(nextAbilityUse <= 0 )
+        {
+            nextAbilityUse = 0;
+            pickupText.text = currentPickups + "/" + maxPickups + "Pickups to use" 
+            + " Time left until you can use next ability: " + nextAbilityUse;
+        }
+        else{
+            pickupText.text = currentPickups + "/" + maxPickups + "Pickups to use" 
+            + " Time left until you can use next ability: " + nextAbilityUse;
+        }
     }
 }

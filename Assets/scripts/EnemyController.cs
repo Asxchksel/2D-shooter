@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.Find("Ship");
 
-        float x = Random.Range(-5f, 5f);
+        float x = Random.Range(-10f, 10f);
         Vector2 pos = new Vector2(x, Camera.main.orthographicSize +1);
 
         transform.position = pos;

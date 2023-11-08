@@ -1421,7 +1421,7 @@ MonoBehaviour:
   LaserBeamPickup: {fileID: 7884015469058951532, guid: 5f89320fbbc5317419b62a2b636b412f,
     type: 3}
   timeBetweenEnemies: 1.5
-  timeBetweenPickups: 5
+  timeBetweenPickups: 15
 --- !u!4 &2119483133
 Transform:
   m_ObjectHideFlags: 0

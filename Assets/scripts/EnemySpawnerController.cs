@@ -38,7 +38,7 @@ public class EnemySpawnerController : MonoBehaviour
             enemySpawnTimer = 0;
         }
 
-        if(pickupSpawnTimer > timeBetweenPickups && randomNumber < 5){
+        if(pickupSpawnTimer > timeBetweenPickups && randomNumber < 5 && player.GetComponent<ShipController>().currentHp != 100){
             Instantiate(HealthPickupPrefab);
             pickupSpawnTimer = 0;
             }
